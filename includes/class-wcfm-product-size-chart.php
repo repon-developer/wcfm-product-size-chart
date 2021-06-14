@@ -49,9 +49,23 @@ class WCFM_Product_Size_Chart {
 		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-chart-post-types.php';
         WCFM_Product_Size_Chart_Post_Types::instance();
 
+		$this->includes();
+
 		// Actions.
 		add_action( 'init', [ $this, 'load_plugin_textdomain' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+
+		
+	}
+
+	/**
+	 * Loads textdomain for plugin.
+	 */
+	public function includes() {
+		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-sizes-helper.php';
+		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-query.php';
+		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-chart-endpoint.php';
+        WCFM_Endpoint_Product_Size_Chart::instance();
 	}
 
 
@@ -68,6 +82,7 @@ class WCFM_Product_Size_Chart {
 	 *
 	 */
 	public function frontend_scripts() {
-		wp_register_script( 'wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/js/product-size-chart.js', [ 'jquery' ], WCFM_PRODUCT_SIZE_CHART_VERSION, true );
+		wp_register_style('wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.css');
+		wp_register_script( 'wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.js', [ 'jquery' ], WCFM_PRODUCT_SIZE_CHART_VERSION, true );
 	}
 }

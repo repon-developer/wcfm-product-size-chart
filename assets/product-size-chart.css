@@ -1,0 +1,79 @@
+#wcfm_product_size_chart {
+    --borderColor: #dcdcdc
+}
+
+#wcfm_product_size_chart table.table-product-size-chart-edit {
+    border-collapse: collapse;
+}
+
+#wcfm_product_size_chart table.table-product-size-chart-edit tr th,
+#wcfm_product_size_chart table.table-product-size-chart-edit tr td {
+    padding: 10px 15px!important;
+    border: 1px solid var(--borderColor);
+}
+
+#wcfm_product_size_chart table.table-product-size-chart-edit tr th {
+    width: 250px;
+    font-weight: normal;
+    padding-top: 19px!important; 
+    vertical-align: top!important;
+    background-color: #f3f3f3;
+}
+
+#wcfm_product_size_chart [name="post_title"] {
+    width: min(100%, 700px);
+}
+
+#wcfm_product_size_chart .wp-switch-editor {top: 11px}
+
+#wcfm_product_size_chart select, #wcfm_product_size_chart .btn-submit {
+    padding: 10px;
+}
+
+#wcfm_product_size_chart .btn-submit {
+    min-width: 140px;
+}
+
+#wcfm_product_size_chart .table-product-size-chart-edit .select2-container {margin-bottom: 0;}
+
+
+#chart-editor-container {display: flex}
+
+#chart-editor-container .btn-add-column {
+    font-size: 16px;
+    padding: 20px 12px;
+    text-align: center;
+    margin-left: -1px!important;
+    writing-mode: vertical-rl;
+    background-color: #f3f3f3;
+    border: 1px solid var(--borderColor);
+}
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor {margin: 0!important;}
+
+#chart-editor-container table.table-wcfm-chart-editor tr th, #chart-editor-container table.table-wcfm-chart-editor tr td {
+    padding: 0!important;
+}
+
+#chart-editor-container table.table-wcfm-chart-editor input {
+    width: 100%;
+    border: none!important;
+    box-shadow: none!important;
+    background-color: transparent!important;
+}
+
+table.table-wcfm-chart-editor tfoot td {
+    padding: 0!important;
+    border-top: none!important;
+    background-color: #f3f3f3!important;
+}
+
+table.table-wcfm-chart-editor tfoot .btn-add-row {
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#chart-editor-container table.table-wcfm-chart-editor {
+    border-collapse: collapse;
+}

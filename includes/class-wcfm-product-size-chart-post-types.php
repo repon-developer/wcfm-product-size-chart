@@ -49,18 +49,18 @@ class WCFM_Product_Size_Chart_Post_Types {
 	 * Registers the custom post type and taxonomies.
 	 */
 	public function register_post_types() {
-		if ( post_type_exists( 'wcfm_product_size_chart' ) ) {
+		if ( post_type_exists( 'wcfm_product_size' ) ) {
 			return;
 		}
 
 		$singular = __( 'Product Size Chart', 'wcfm-product-size-chart' );
 		$plural   = __( 'Product Size Charts', 'wcfm-product-size-chart' );
 
-		register_post_type('wcfm_product_size_chart', array(
+		register_post_type('wcfm_product_size', array(
 			'labels'                => [
 				'name'                  => $plural,
 				'singular_name'         => $singular,
-				'menu_name'             => __( 'Job Listings', 'wcfm-product-size-chart' ),
+				//'menu_name'             => $plural,
 				'all_items'             => sprintf( __( 'All %s', 'wcfm-product-size-chart' ), $plural ),
 				'add_new'               => __( 'Add New', 'wcfm-product-size-chart' ),
 				'add_new_item'          => sprintf( __( 'Add %s', 'wcfm-product-size-chart' ), $singular ),
@@ -73,18 +73,19 @@ class WCFM_Product_Size_Chart_Post_Types {
 				'not_found'             => sprintf( __( 'No %s found', 'wcfm-product-size-chart' ), $plural ),
 				'not_found_in_trash'    => sprintf( __( 'No %s found in trash', 'wcfm-product-size-chart' ), $plural ),
 				'parent'                => sprintf( __( 'Parent %s', 'wcfm-product-size-chart' ), $singular ),
-				'featured_image'        => __( 'Company Logo', 'wcfm-product-size-chart' ),
-				'set_featured_image'    => __( 'Set company logo', 'wcfm-product-size-chart' ),
-				'remove_featured_image' => __( 'Remove company logo', 'wcfm-product-size-chart' ),
-				'use_featured_image'    => __( 'Use as company logo', 'wcfm-product-size-chart' ),
+				'featured_image'        => __( 'Product Size', 'wcfm-product-size-chart' ),
+				'set_featured_image'    => __( 'Set Product Size Image', 'wcfm-product-size-chart' ),
+				'remove_featured_image' => __( 'Remove Product Size Image', 'wcfm-product-size-chart' ),
+				'use_featured_image'    => __( 'Use as Product Size Image', 'wcfm-product-size-chart' ),
 			],
 			// translators: Placeholder %s is the plural label of the job listing post type.
 			'description'           => sprintf( __( 'This is where you can create and manage %s.', 'wcfm-product-size-chart' ), $plural ),
 			'public'                => true,
 			'show_ui'               => true,
 			'hierarchical'          => false,
-			'supports'              => [ 'title', 'editor', 'custom-fields', 'publicize', 'thumbnail'],
-			'menu_position'         => 30,
+			'supports'              => [ 'title', 'editor', 'custom-fields', 'thumbnail', 'author'],
+			'menu_position'         => 10,
+			'menu_icon' 			=> 'dashicons-schedule'
 		));
 	}
 }
