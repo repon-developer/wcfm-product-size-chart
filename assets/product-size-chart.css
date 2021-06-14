@@ -40,13 +40,19 @@
 #chart-editor-container {display: flex}
 
 #chart-editor-container .btn-add-column {
-    font-size: 16px;
     padding: 20px 12px;
     text-align: center;
     margin-left: -1px!important;
     writing-mode: vertical-rl;
     background-color: #f3f3f3;
     border: 1px solid var(--borderColor);
+}
+
+
+#chart-editor-container .btn-add-row {
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
 }
 
 #wcfm_product_size_chart table.table-wcfm-chart-editor {margin: 0!important;}
@@ -68,11 +74,6 @@ table.table-wcfm-chart-editor tfoot td {
     background-color: #f3f3f3!important;
 }
 
-table.table-wcfm-chart-editor tfoot .btn-add-row {
-    display: block;
-    padding: 10px 20px;
-    text-align: center;
-}
 
 #chart-editor-container table.table-wcfm-chart-editor {
     border-collapse: collapse;

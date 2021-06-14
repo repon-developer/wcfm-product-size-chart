@@ -54,26 +54,17 @@
                             <th>Chart Table</th>
                             <td>
                                 <div id="chart-editor-container">
+                                    <input id="product_size_chart" name="product_size_chart" type="hidden" value='[["UK","US","Inch"],["34","54","56"],["24","65","55"]]'>
                                     <table class="table-wcfm-chart-editor">
                                         <thead>
                                             <tr>
-                                                <th><input type="text"></th>
-                                                <th><input type="text"></th>
-                                                <th><input type="text"></th>
+                                                <th><input type="text" name="chart_data"></th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <tr>
-                                                <td><input type="text"></td>
-                                                <td><input type="text"></td>
-                                                <td><input type="text"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><input type="text"></td>
-                                                <td><input type="text"></td>
-                                                <td><input type="text"></td>
+                                                <td><input type="text" name="chart_data"></td>
                                             </tr>
                                         </tbody>
 
