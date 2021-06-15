@@ -42,7 +42,7 @@
                             <td>
                                 <select id="chart-exclude-products" name="exclude_products[]" multiple="multiple">
                                     <?php foreach ($vendor_products as $product_id => $product_title) {
-                                        $selected = in_array($product_id, (array) $form->products) ? 'selected="selected"' : '';
+                                        $selected = in_array($product_id, (array) $form->exclude_products) ? 'selected="selected"' : '';
                                         printf('<option value="%s" %s>%s</option>', $product_id, $selected, $product_title);                                        
                                     }
                                     ?>
@@ -53,19 +53,36 @@
                         <tr>
                             <th>Chart Table</th>
                             <td>
+                                <?php
+                                $product_size_table = $form->product_size_table;                                
+                                if ( !is_array($product_size_table)) {
+                                    $product_size_table = [];
+                                }
+                                
+                                $headers = array_shift($product_size_table);
+                                ?>
                                 <div id="chart-editor-container">
-                                    <input id="product_size_chart" name="product_size_chart" type="hidden" value='[["UK","US","Inch"],["34","54","56"],["24","65","55"]]'>
+                                    <input id="product_size_table" name="product_size_table" type="hidden" value='[["UK","US","Inch"],["34","54","56"],["24","65","55"]]'>
                                     <table class="table-wcfm-chart-editor">
                                         <thead>
                                             <tr>
-                                                <th><input type="text" name="chart_data"></th>
+                                                <?php
+                                                 foreach ($headers as $header) {
+                                                     printf('<th><input placeholder="Header" type="text" name="chart_data" value="%s"></th>', $header);
+                                                 }
+                                                ?>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td><input type="text" name="chart_data"></td>
-                                            </tr>
+                                            <?php foreach ($product_size_table as $key => $row) {
+                                                echo '<tr>';
+                                                foreach ($row as $data) {
+                                                    printf('<td><input type="text" name="chart_data" value="%s"></td>', $data);
+                                                }
+                                                echo '</tr>';
+                                            } 
+                                            ?>
                                         </tbody>
 
                                         <tfoot>
@@ -76,8 +93,6 @@
                                     </table>
                                     <a class="btn-add-column" href="#">Add Column</a>
                                 </div>
-
-
                             </td>
                         </tr>
 

@@ -44,7 +44,7 @@
             chart_data.push(cell_data);
         })
 
-        $('#product_size_chart').val( JSON.stringify(chart_data))
+        $('#product_size_table').val( JSON.stringify(chart_data))
 
     });
 

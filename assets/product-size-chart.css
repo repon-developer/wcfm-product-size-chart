@@ -2,6 +2,14 @@
     --borderColor: #dcdcdc
 }
 
+
+table.table-wcfm-product-sizes .actions a {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
+
 #wcfm_product_size_chart table.table-product-size-chart-edit {
     border-collapse: collapse;
 }

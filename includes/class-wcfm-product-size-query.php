@@ -26,7 +26,7 @@ class WCFM_Product_Size_Query extends WP_Query {
         parent::__construct( [
             'post_type' => 'wcfm_product_size',
             'author' => get_current_user_id(  ),
-			'post_status' => ['publish', 'pending', 'draft', 'future']
+			'post_status' => ['publish', 'pending', 'draft', 'future', 'trash']
         ] );
 	}
 

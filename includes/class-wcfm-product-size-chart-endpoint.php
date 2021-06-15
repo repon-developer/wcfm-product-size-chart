@@ -157,7 +157,7 @@ class WCFM_Endpoint_Product_Size_Chart {
 			
 
 			$product_cats = get_terms([
-				'taxonomy' => 'post_tag',
+				'taxonomy' => 'product_cat',
     			'hide_empty' => false,
 			]);
 
@@ -165,7 +165,7 @@ class WCFM_Endpoint_Product_Size_Chart {
 			include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-edit.php';
 
 		} else {
-			include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-sizes.php';
+			include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-charts.php';
 		}
 
 	}
