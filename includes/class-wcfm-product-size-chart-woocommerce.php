@@ -45,6 +45,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
 	 * Constructor.
 	 */
 	public function __construct() {
+        add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
         add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
 	}
 
@@ -76,6 +77,22 @@ class WCFM_Product_Size_Chart_Woocommerce {
         return $size_charts[0];
     }
 
+    public function wcfm_product_size_chart_popup() {
+        $chart = $this->get_chart();
+        if ( false == $chart ) {
+            return '';
+        }
+
+        echo '<a class="wcfm-product-size-chart-popup-btn" href="#">Size Chart</a>';
+        echo '<div class="wcfm-product-size-chart-popup">';
+            echo '<div class="wcfm-chart-popup-content">';
+                echo '<span class="wcfmfa fa-close" data-close></span>';
+                echo '<h3 class="chart-title">'. get_the_title( $chart->ID ) .'</h3>';
+                include WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
+            echo '</div>';
+        echo '</div>';
+    }
+
     public function wcfm_product_size_chart_tab($tabs) {
         $chart = $this->get_chart();
         if ( false == $chart ) {
@@ -84,7 +101,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
         
         $tabs['wcfm_size_chart'] = [
             'title' => __('Size Chart'),
-            //'callback' => [$this, 'wcfm_product_size_chart_tab_content']
             'callback' => function() use($chart) {
                 $this->wcfm_product_size_chart_tab_content($chart);
             }
@@ -94,7 +110,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
     }
     
     public function wcfm_product_size_chart_tab_content($chart) {
-        include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
+        include WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
     }
 
 }

@@ -110,7 +110,7 @@ table.table-wcfm-chart-editor tfoot td {padding: 0!important; border-top: none!i
 
 #chart-editor-container table.table-wcfm-chart-editor {border-collapse: collapse}
 
-.wcfm-product-size-chart-container table.wcfm-product-size-chart-table {margin-top: 20px;}
+.wcfm-product-size-chart-container table.wcfm-product-size-chart-table {clear: both; width: 100%; margin-top: 20px;}
 
 table.wcfm-product-size-chart-table tr th,
 table.wcfm-product-size-chart-table tr td {
@@ -121,3 +121,56 @@ table.wcfm-product-size-chart-table tr td {
 table.wcfm-product-size-chart-table thead tr th {
     background-color: #f3f3f3;
 }
+
+.wcfm-product-size-chart-popup-btn {margin-bottom: 10px; display: inline-block;}
+
+.wcfm-product-size-chart-popup {
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 6666000;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);    
+    transition: all 200ms;
+}
+
+.wcfm-product-size-chart-popup.opened {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.wcfm-product-size-chart-popup [data-close] {
+    color: #fff;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 18px;
+    height: 18px;
+    font-size: 12px!important;
+    text-align: center;
+    line-height: 18px;
+    cursor: pointer;
+    background-color: rgb(15, 14, 14);
+    border-radius: 100px;
+}
+
+.wcfm-product-size-chart-popup .wcfm-chart-popup-content {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: 100%;
+    position: relative;
+    width: min(100%, 700px);
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.wcfm-chart-popup-content .chart-title {margin-top: 0;}
