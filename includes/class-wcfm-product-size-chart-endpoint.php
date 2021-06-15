@@ -120,17 +120,9 @@ class WCFM_Endpoint_Product_Size_Chart {
 		}
 
 		global $WCFM;
-
-		global $WCFM;
 		wp_enqueue_script( 'select2_js', $WCFM->plugin_url . 'includes/libs/select2/select2.js', array('jquery'), $WCFM->version, true );
 		wp_enqueue_style( 'select2_css',  $WCFM->plugin_url . 'includes/libs/select2/select2.css', array(), $WCFM->version );
-		
-		wp_enqueue_style( 'wcfm-product-size-chart');
-		wp_enqueue_script( 'wcfm-product-size-chart' );
 	}
-
-
-
 
 
 	/**

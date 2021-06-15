@@ -1,7 +1,7 @@
 <div class="wcfm-product-size-chart-container">
     <?php 
 
-echo '<div class="chart-content">' . get_the_content( null, false, $chart_id) . '</div>';
+echo '<div class="chart-content">' . get_the_content( null, false, $chart->ID) . '</div>';
 
 $chart_data = $chart->product_size_table;
 

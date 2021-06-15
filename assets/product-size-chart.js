@@ -1,5 +1,8 @@
 (function ($) {
-    $('#chart-categories, #chart-exclude-products').select2();
+
+    if ( typeof select2 === 'function' ) {
+        $('#chart-categories, #chart-exclude-products').select2();
+    }
 
     const chart_table = $('#chart-editor-container table');
 

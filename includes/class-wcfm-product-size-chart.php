@@ -53,7 +53,7 @@ class WCFM_Product_Size_Chart {
 
 		// Actions.
 		add_action( 'init', [ $this, 'load_plugin_textdomain' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ], 30 );
 	}
 
 	/**
@@ -84,7 +84,7 @@ class WCFM_Product_Size_Chart {
 	 *
 	 */
 	public function frontend_scripts() {
-		wp_register_style('wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.css');
-		wp_register_script( 'wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.js', [ 'jquery' ], WCFM_PRODUCT_SIZE_CHART_VERSION, true );
+		wp_enqueue_style('wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.css');
+		wp_enqueue_script( 'wcfm-product-size-chart', WCFM_PRODUCT_SIZE_CHART_PLUGIN_URL . '/assets/product-size-chart.js', [ 'jquery' ], WCFM_PRODUCT_SIZE_CHART_VERSION, true );
 	}
 }

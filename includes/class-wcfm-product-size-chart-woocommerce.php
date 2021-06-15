@@ -45,42 +45,42 @@ class WCFM_Product_Size_Chart_Woocommerce {
 	 * Constructor.
 	 */
 	public function __construct() {
-
-
-       
-
         add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
-
-
-		
 	}
 
-    public function wcfm_product_size_chart_tab($tabs) {
+    public function get_chart() {
         global $product;
 
         $vendor_id = wcfm_get_vendor_id_by_post( $product->get_id() );
         if ( !wcfm_is_vendor($vendor_id) ) {
-            return $tabs;
+            return false;
         }
 
         $size_charts = get_wcfm_product_size_charts(['author' => $vendor_id]);
         if ( sizeof($size_charts) == 0 ) {
-            return $tabs;
+            return false;
         }
 
         $product_cats = get_the_terms( $product->get_id(), 'product_cat' );
 
-        $cat_ids = wp_list_pluck( $product_cats, 'term_id');
+        $cat_ids = is_array($product_cats) ? wp_list_pluck( $product_cats, 'term_id') : [];
         
         $size_charts = array_filter($size_charts, function($item) use ($cat_ids) {
             return sizeof( array_diff($item->chart_categories, $cat_ids) ) == 0;
         });
 
         if ( empty($size_charts) ) {
-            return $tabs;
+            return false;
         }
 
-        $chart = $size_charts[0];
+        return $size_charts[0];
+    }
+
+    public function wcfm_product_size_chart_tab($tabs) {
+        $chart = $this->get_chart();
+        if ( false == $chart ) {
+            return $tabs;
+        }
         
         $tabs['wcfm_size_chart'] = [
             'title' => __('Size Chart'),
@@ -94,11 +94,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
     }
     
     public function wcfm_product_size_chart_tab_content($chart) {
-        $chart_id = $chart->ID;
-        
-
         include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
-
     }
 
 }

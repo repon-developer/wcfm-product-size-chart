@@ -1,18 +1,10 @@
-#wcfm_product_size_chart {
-    --borderColor: #dcdcdc
-}
+#wcfm_product_size_chart {--borderColor: #dcdcdc}
 
-
-table.table-wcfm-product-sizes .actions a {
-    font-size: 18px;
-    margin-right: 5px;
-}
+table.table-wcfm-product-sizes .actions a {font-size: 18px; margin-right: 5px}
 
 table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
 
-#wcfm_product_size_chart table.table-product-size-chart-edit {
-    border-collapse: collapse;
-}
+#wcfm_product_size_chart table.table-product-size-chart-edit {border-collapse: collapse}
 
 #wcfm_product_size_chart table.table-product-size-chart-edit tr th,
 #wcfm_product_size_chart table.table-product-size-chart-edit tr td {
@@ -28,9 +20,7 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
     background-color: #f3f3f3;
 }
 
-#wcfm_product_size_chart [name="post_title"] {
-    width: min(100%, 700px);
-}
+#wcfm_product_size_chart [name="post_title"] {width: min(100%, 700px)}
 
 #wcfm_product_size_chart .wp-switch-editor {top: 11px}
 
@@ -55,7 +45,6 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
     background-color: #f3f3f3;
     border: 1px solid var(--borderColor);
 }
-
 
 #chart-editor-container .btn-add-row {
     display: block;
@@ -104,7 +93,6 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
     transition: all 200ms;
 }
 
-
 #wcfm_product_size_chart table.table-wcfm-chart-editor th:hover [data-delete-column] {
     opacity: 1;
     pointer-events: all;
@@ -118,13 +106,18 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
     background-color: transparent!important;
 }
 
-table.table-wcfm-chart-editor tfoot td {
-    padding: 0!important;
-    border-top: none!important;
-    background-color: #f3f3f3!important;
+table.table-wcfm-chart-editor tfoot td {padding: 0!important; border-top: none!important; background-color: #f3f3f3!important}
+
+#chart-editor-container table.table-wcfm-chart-editor {border-collapse: collapse}
+
+.wcfm-product-size-chart-container table.wcfm-product-size-chart-table {margin-top: 20px;}
+
+table.wcfm-product-size-chart-table tr th,
+table.wcfm-product-size-chart-table tr td {
+    text-align: center;
+    border: 1px solid #dcdcdc!important
 }
 
-
-#chart-editor-container table.table-wcfm-chart-editor {
-    border-collapse: collapse;
+table.wcfm-product-size-chart-table thead tr th {
+    background-color: #f3f3f3;
 }
