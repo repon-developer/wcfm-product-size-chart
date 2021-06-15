@@ -24,6 +24,10 @@
     })
 
     chart_table.on('click', 'thead [data-delete-column]', function (e) {
+        if ( $(this).closest('tr').children().length <= 2 ) {
+            return;
+        }
+
         const column_no = $(this).closest('th').index();
 
         chart_table.find('tr th').eq(column_no).remove();

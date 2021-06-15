@@ -54,15 +54,15 @@
                             <th>Chart Table</th>
                             <td>
                                 <?php
-                                $product_size_table = $form->product_size_table;                                
-                                if ( !is_array($product_size_table)) {
-                                    $product_size_table = [];
+                                $product_size_table = $form->product_size_table;
+                                if ( !is_array($product_size_table) || empty($product_size_table)) {
+                                    $product_size_table = [[''], ['']];
                                 }
                                 
                                 $headers = array_shift($product_size_table);
                                 ?>
                                 <div id="chart-editor-container">
-                                    <input id="product_size_table" name="product_size_table" type="hidden" value='[["UK","US","Inch"],["34","54","56"],["24","65","55"]]'>
+                                    <input id="product_size_table" name="product_size_table" type="hidden" value='<?php echo json_encode($form->product_size_table) ?>'>
                                     <table class="table-wcfm-chart-editor">
                                         <thead>
                                             <tr>
