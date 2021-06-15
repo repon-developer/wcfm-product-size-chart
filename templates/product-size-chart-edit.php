@@ -66,9 +66,13 @@
                                     <table class="table-wcfm-chart-editor">
                                         <thead>
                                             <tr>
+                                                <th class="remove-row"></th>
                                                 <?php
                                                  foreach ($headers as $header) {
-                                                     printf('<th><input placeholder="Header" type="text" name="chart_data" value="%s"></th>', $header);
+                                                     echo '<th>';
+                                                         printf('<input placeholder="Header" type="text" name="chart_data" value="%s">', $header);
+                                                         echo '<span class="wcfmfa fa-close" data-delete-column></span>';
+                                                     echo '</th>';
                                                  }
                                                 ?>
                                             </tr>
@@ -77,6 +81,7 @@
                                         <tbody>
                                             <?php foreach ($product_size_table as $key => $row) {
                                                 echo '<tr>';
+                                                echo '<td class="remove-row"><span class="wcfmfa fa-close" data-delete-row></span></td>';
                                                 foreach ($row as $data) {
                                                     printf('<td><input type="text" name="chart_data" value="%s"></td>', $data);
                                                 }

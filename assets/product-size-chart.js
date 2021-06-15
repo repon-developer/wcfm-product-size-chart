@@ -6,29 +6,40 @@
     $('#chart-editor-container .btn-add-column').on('click', function (e) {
         e.preventDefault();
 
-        chart_table.find('thead tr').append('<th><input name="chart_data" type="text" /></th>');
-        chart_table.find('tbody tr').append('<td><input name="chart_data" type="text" /></td>');
+        chart_table.find('thead tr').append('<th><input type="text" /> <span class="wcfmfa fa-close" data-delete-column /></th>');
+        chart_table.find('tbody tr').append('<td><input type="text" /></td>');
 
         chart_table.trigger('update')
     })
 
     $('#chart-editor-container .btn-add-row').on('click', function (e) {
         e.preventDefault();
-
-        const row_no = chart_table.find('tr').length;
-
-        const row = $('<tr />');        
-        chart_table.find('thead th').each(() => {
-            row.append(`<td><input name="chart_data" type="text" /></td>`);
+        const row = $('<tr />').append('<td class="remove-row"><span class="wcfmfa fa-close" data-delete-row></span></td>');
+        chart_table.find('thead th:not(.remove-row)').each(() => {
+            row.append(`<td><input type="text" /></td>`);
         });
 
         row.appendTo(chart_table.find('tbody'));
+        chart_table.trigger('update');
+    })
+
+    chart_table.on('click', 'thead [data-delete-column]', function (e) {
+        const column_no = $(this).closest('th').index();
+
+        chart_table.find('tr th').eq(column_no).remove();
+        chart_table.find('tbody tr').each(function(){
+            $(this).children().eq(column_no).remove()
+        });
 
         chart_table.trigger('update');
     })
 
-    chart_table.on('keyup', 'input', function(event) {
+    chart_table.find('tbody').on('click', 'td.remove-row', function (e) {
+        $(this).closest('tr').remove();
+        chart_table.trigger('update');
+    })
 
+    chart_table.on('keyup', 'input', function(event) {
         chart_table.trigger('update');
     })
 
@@ -45,7 +56,6 @@
         })
 
         $('#product_size_table').val( JSON.stringify(chart_data))
-
     });
 
 })(jQuery)

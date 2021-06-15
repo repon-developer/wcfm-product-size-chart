@@ -63,10 +63,52 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
     text-align: center;
 }
 
-#wcfm_product_size_chart table.table-wcfm-chart-editor {margin: 0!important;}
+#wcfm_product_size_chart table.table-wcfm-chart-editor {margin: 0!important; --removeColor: #711700 }
 
 #chart-editor-container table.table-wcfm-chart-editor tr th, #chart-editor-container table.table-wcfm-chart-editor tr td {
     padding: 0!important;
+    position: relative;
+}
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor .remove-row {text-align: center; cursor: pointer; min-width: 34px; width: 1%!important}
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor td.remove-row:hover {
+    color: #fff;
+    background-color: var(--removeColor);
+    border-color: var(--removeColor)!important;
+}
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor [data-delete-column],
+#wcfm_product_size_chart table.table-wcfm-chart-editor [data-delete-row] {
+    cursor: pointer;
+}
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor [data-delete-column] {
+    padding: 0;
+    position: absolute;
+    z-index: 3;
+    right: 2px;
+    top: 3px;
+    font-size: 10px;
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 15px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background-color: var(--removeColor);
+    border-radius: 100px;
+    transition: all 200ms;
+}
+
+
+#wcfm_product_size_chart table.table-wcfm-chart-editor th:hover [data-delete-column] {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
 }
 
 #chart-editor-container table.table-wcfm-chart-editor input {
