@@ -54,6 +54,7 @@
                             <th>Chart Table</th>
                             <td>
                                 <?php
+
                                 $product_size_table = $form->product_size_table;
                                 if ( !is_array($product_size_table) || empty($product_size_table)) {
                                     $product_size_table = [[''], ['']];

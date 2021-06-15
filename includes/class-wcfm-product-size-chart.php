@@ -48,14 +48,12 @@ class WCFM_Product_Size_Chart {
 		// Includes.
 		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-chart-post-types.php';
         WCFM_Product_Size_Chart_Post_Types::instance();
-
+		
 		$this->includes();
 
 		// Actions.
 		add_action( 'init', [ $this, 'load_plugin_textdomain' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
-
-		
 	}
 
 	/**
@@ -64,6 +62,10 @@ class WCFM_Product_Size_Chart {
 	public function includes() {
 		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-sizes-helper.php';
 		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-query.php';
+		
+		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-chart-woocommerce.php';
+		WCFM_Product_Size_Chart_Woocommerce::instance();
+		
 		include_once WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/includes/class-wcfm-product-size-chart-endpoint.php';
         WCFM_Endpoint_Product_Size_Chart::instance();
 	}
