@@ -57,7 +57,24 @@ class WCFM_Endpoint_Product_Size_Chart {
 		add_action( 'init', function(){
 			$this->form = new WCFM_Product_Size_Chart_Form();
 		});
-		
+
+		add_action( 'template_redirect', [$this, 'secure_edit_chart']);
+	}
+
+	public function secure_edit_chart() {
+		if ( !isset($_GET['edit_chart']) || $_GET['edit_chart'] == 'new' ) {
+			return;
+		}
+
+		$chart = get_post( $_GET['edit_chart'] );
+
+		if (is_a($chart, 'WP_Post') && $chart->post_type != 'wcfm_product_size' ) {
+			exit(wp_safe_redirect(wcfm_product_sizes_chart_url()));
+		}
+
+		if ( $chart->post_author != get_current_user_id(  ) ) {
+			exit(wp_safe_redirect(wcfm_product_sizes_chart_url()));
+		}
 	}
 
 	public function wcfm_init_endpoint() {
@@ -112,7 +129,7 @@ class WCFM_Endpoint_Product_Size_Chart {
 			return;
 		}
 
-		if ( isset($_GET['chart']) ) {
+		if ( isset($_GET['edit_chart']) ) {
 			$form = $this->form;
 
 			$get_vendor_products = wc_get_products([
@@ -124,7 +141,6 @@ class WCFM_Endpoint_Product_Size_Chart {
 				next($get_vendor_products);
 				$vendor_products[$product->get_id()] = $product->get_title();
 			}
-			
 
 			$product_cats = get_terms([
 				'taxonomy' => 'product_cat',

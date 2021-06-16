@@ -23,7 +23,7 @@ class WCFM_Product_Size_Chart_Form {
 		$this->delete();
 		$this->submit();
 
-		$product_size = get_post($_GET['chart']);
+		$product_size = get_post($_GET['edit_chart']);
 		
 		if ( !is_a($product_size, 'WP_Post') || $product_size->post_type !== 'wcfm_product_size' ) {
 			return;
@@ -59,7 +59,7 @@ class WCFM_Product_Size_Chart_Form {
 		}
 
 		$product_size_id = wp_insert_post([
-			'ID' => $_GET['chart'],
+			'ID' => $_GET['edit_chart'],
 			'post_type' => 'wcfm_product_size',
 			'post_title' => $_POST['post_title'],
 			'post_content' => $_POST['post_content'],
@@ -72,7 +72,7 @@ class WCFM_Product_Size_Chart_Form {
 		
 		update_post_meta( $product_size_id, 'chart_position', $_POST['chart_position']);
 
-		wp_safe_redirect(add_query_arg( 'chart', $product_size_id, wcfm_product_sizes_chart_url()));
+		wp_safe_redirect(add_query_arg( 'edit_chart', $product_size_id, wcfm_product_sizes_chart_url()));
 		exit;
 	}
 

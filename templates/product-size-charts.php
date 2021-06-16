@@ -9,7 +9,7 @@ $post_statuses['trash'] = __('Trash'); ?>
 
         <div class="wcfm-container wcfm-top-element-container">
             <h2><?php _e( 'Product sizes chart', 'wcfm-product-size-chart' ); ?></h2>
-            <a class="add_new_wcfm_ele_dashboard" href="<?php echo add_query_arg( 'chart', 'new', wcfm_product_sizes_chart_url() ) ?>"><span
+            <a class="add_new_wcfm_ele_dashboard" href="<?php echo add_query_arg( 'edit_chart', 'new', wcfm_product_sizes_chart_url() ) ?>"><span
                     class="wcfmfa fa-table"></span><span class="text">Add Product Size</span></a>
         </div><br>
 
@@ -31,7 +31,7 @@ $post_statuses['trash'] = __('Trash'); ?>
                     <?php if ( $product_sizes_query->have_posts() ) : ?>
 
 						<?php while( $product_sizes_query->have_posts() ) : $product_sizes_query->the_post();
-							$edit_permalink = add_query_arg( 'chart', get_the_ID(), wcfm_product_sizes_chart_url() ); 
+							$edit_permalink = add_query_arg( 'edit_chart', get_the_ID(), wcfm_product_sizes_chart_url() ); 
 							$delete_permalink = add_query_arg( [
                                 'chart' =>  get_the_ID(),
                                 '_nonce' => wp_create_nonce( 'delete_chart_size' )
