@@ -1,6 +1,5 @@
 <?php
 /**
- * File containing the class WP_Job_Manager.
  *
  * @package wcfm-product-size-chart
  * @since   1.0.1
@@ -11,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Handles core plugin hooks and action setup.
+ * Extend WP_Query class for product size query
  *
  * @since 1.0.1
  */

@@ -103,6 +103,16 @@
                         </tr>
 
                         <tr>
+                            <th>Chart Position</th>
+                            <td>
+                                <select name="chart_position">
+                                   <option value="tab" <?php selected($form->chart_position, 'tab') ?>>Within Tab</option>
+                                   <option value="before_cart_form" <?php selected($form->chart_position, 'before_cart_form') ?>>Before Cart Form</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
                             <th>Status</th>
                             <td>
                                 <select name="post_status">

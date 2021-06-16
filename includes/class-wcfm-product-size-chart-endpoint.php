@@ -1,6 +1,5 @@
 <?php
 /**
- * File containing the class WP_Job_Manager.
  *
  * @package wcfm-product-size-chart
  * @since   1.0.1
@@ -31,7 +30,6 @@ class WCFM_Endpoint_Product_Size_Chart {
 	 *
 	 * @since  1.0.1
 	 * @static
-	 * @see WPJM()
 	 * @return self Main instance.
 	 */
 	public static function instance() {
@@ -45,7 +43,7 @@ class WCFM_Endpoint_Product_Size_Chart {
 	 * Constructor.
 	 */
 	public function __construct() {
-		//add_action( 'init', array( &$this, 'wcfm_init_endpoint' ), 20 );
+		add_action( 'init', array( &$this, 'wcfm_init_endpoint' ), 20 );
 		add_filter( 'wcfm_menus', array( $this, 'wcfm_add_endpoint_menu' ), 20 );
 		add_filter( 'wcfm_query_vars', array( $this, 'wcfm_endpoint_query_vars' ), 20 );
 
@@ -62,11 +60,6 @@ class WCFM_Endpoint_Product_Size_Chart {
 		
 	}
 
-
-	/**
-	 * Registers and enqueues scripts and CSS.
-	 *
-	 */
 	public function wcfm_init_endpoint() {
 		global $WCFM_Query;
 
@@ -79,18 +72,14 @@ class WCFM_Endpoint_Product_Size_Chart {
         }
 	}
 
-	/**
-	 * Registers and enqueues scripts and CSS.
-	 *
-	 */
 	public function wcfm_add_endpoint_menu($menus) {
 		global $WCFM;
         
         $featured_menus = array( 'wcfm-product-size-chart' => array(   'label'  => __( 'Product Size Chart', 'wc-frontend-manager'),
             'label' => 'Product Size Chart',
             'url' => wcfm_product_sizes_chart_url(),
-            'icon' => 'star',
-            'priority' => 5
+            'icon' => 'table',
+            'priority' => 3
         ) );
 
         $menus = array_merge( $menus, $featured_menus );
@@ -98,10 +87,6 @@ class WCFM_Endpoint_Product_Size_Chart {
         return $menus;
 	}
 
-	/**
-	 * Registers and enqueues scripts and CSS.
-	 *
-	 */
 	public function wcfm_endpoint_query_vars($query_vars) {
 		global $WCFM;
 
@@ -110,10 +95,6 @@ class WCFM_Endpoint_Product_Size_Chart {
         return $query_vars;
 	}
 
-	/**
-	 * Registers and enqueues scripts and CSS.
-	 *
-	 */
 	public function wcfm_load_scripts($end_point) {
 		if ( $end_point !== 'wcfm-product-size-chart') {
 			return;
@@ -122,13 +103,10 @@ class WCFM_Endpoint_Product_Size_Chart {
 		global $WCFM;
 		wp_enqueue_script( 'select2_js', $WCFM->plugin_url . 'includes/libs/select2/select2.js', array('jquery'), $WCFM->version, true );
 		wp_enqueue_style( 'select2_css',  $WCFM->plugin_url . 'includes/libs/select2/select2.css', array(), $WCFM->version );
+		
+		wp_enqueue_script('wcfm-product-size-chart');
 	}
 
-
-	/**
-	 * Registers and enqueues scripts and CSS.
-	 *
-	 */
 	public function wcfm_product_size_chart_views($end_point) {
 		if ( $end_point !== 'wcfm-product-size-chart') {
 			return;
@@ -161,6 +139,4 @@ class WCFM_Endpoint_Product_Size_Chart {
 		}
 
 	}
-
-	
 }

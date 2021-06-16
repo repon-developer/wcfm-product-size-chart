@@ -2,7 +2,7 @@
 /**
  * File containing the class WP_Job_Manager_Post_Types.
  *
- * @package wp-job-manager
+ * @package wcfm-product-size-chart
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,14 +20,14 @@ class WCFM_Product_Size_Chart_Post_Types {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since  1.0.1
 	 */
 	private static $instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since  1.0.1
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -80,8 +80,7 @@ class WCFM_Product_Size_Chart_Post_Types {
 			],
 			// translators: Placeholder %s is the plural label of the job listing post type.
 			'description'           => sprintf( __( 'This is where you can create and manage %s.', 'wcfm-product-size-chart' ), $plural ),
-			'public'                => true,
-			'show_ui'               => true,
+			'public'                => false,
 			'hierarchical'          => false,
 			'supports'              => [ 'title', 'editor', 'custom-fields', 'thumbnail', 'author'],
 			'menu_position'         => 10,

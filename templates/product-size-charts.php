@@ -1,9 +1,8 @@
 <?php $product_sizes_query = new WCFM_Product_Size_Query();
 
 $post_statuses = get_post_statuses();
-$post_statuses['trash'] = __('Trash');
+$post_statuses['trash'] = __('Trash'); ?>
 
-?>
 <div class="collapse wcfm-collapse" id="wcfm_product_size_chart">
 
     <div class="wcfm-collapse-content">
@@ -11,15 +10,11 @@ $post_statuses['trash'] = __('Trash');
         <div class="wcfm-container wcfm-top-element-container">
             <h2><?php _e( 'Product sizes chart', 'wcfm-product-size-chart' ); ?></h2>
             <a class="add_new_wcfm_ele_dashboard" href="<?php echo add_query_arg( 'chart', 'new', wcfm_product_sizes_chart_url() ) ?>"><span
-                    class="wcfmfa fa-cube"></span><span class="text">Add New</span></a>
-        </div>
-<br>
+                    class="wcfmfa fa-table"></span><span class="text">Add Product Size</span></a>
+        </div><br>
 
         <div class="wcfm-container">
-
             <div class="wcfm-content">
-
-            <?php //var_dump($product_sizes_query); ?>
 
                 <table class="table-wcfm-product-sizes">
                     <thead>

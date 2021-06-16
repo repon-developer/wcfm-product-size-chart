@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.1
  */
 class WCFM_Product_Size_Chart_Woocommerce {
+    var $chart = null;
 	/**
 	 * The single instance of the class.
 	 *
@@ -31,7 +32,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
 	 *
 	 * @since  1.0.1
 	 * @static
-	 * @see WPJM()
 	 * @return self Main instance.
 	 */
 	public static function instance() {
@@ -45,14 +45,32 @@ class WCFM_Product_Size_Chart_Woocommerce {
 	 * Constructor.
 	 */
 	public function __construct() {
-        add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
-        add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
+        add_action( 'wp', [$this, 'init']);        
 	}
 
-    public function get_chart() {
-        global $product;
+    public function init() {
+        if(!is_product()) {
+            return;
+        }
 
-        $vendor_id = wcfm_get_vendor_id_by_post( $product->get_id() );
+        $this->chart = $this->get_chart();
+        if ( false == $this->chart ) {
+            return '';
+        }
+
+        if ( $this->chart->chart_position === 'before_cart_form' ) {
+            add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
+        }
+
+        if ( $this->chart->chart_position === 'tab' ) {
+            add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
+        }
+    }
+
+    public function get_chart() {
+        global $post;
+
+        $vendor_id = wcfm_get_vendor_id_by_post( $post->ID );
         if ( !wcfm_is_vendor($vendor_id) ) {
             return false;
         }
@@ -62,11 +80,21 @@ class WCFM_Product_Size_Chart_Woocommerce {
             return false;
         }
 
-        $product_cats = get_the_terms( $product->get_id(), 'product_cat' );
+        $product_cats = get_the_terms( $post->ID, 'product_cat' );
 
         $cat_ids = is_array($product_cats) ? wp_list_pluck( $product_cats, 'term_id') : [];
+
+        array_walk($size_charts, function(&$item){
+            $item->chart_categories = is_array($item->chart_categories) ? $item->chart_categories : [];
+            $item->exclude_products = is_array($item->exclude_products) ? $item->exclude_products : [];
+            $item->total_categories = sizeof($item->chart_categories);
+        });
         
-        $size_charts = array_filter($size_charts, function($item) use ($cat_ids) {
+        $size_charts = array_filter($size_charts, function($item) use ($cat_ids, $post) {
+            if ( in_array($post->ID,$item->exclude_products)) {
+                return false;
+            }
+            
             return sizeof( array_diff($item->chart_categories, $cat_ids) ) == 0;
         });
 
@@ -74,15 +102,15 @@ class WCFM_Product_Size_Chart_Woocommerce {
             return false;
         }
 
+        usort($size_charts, function($a, $b) {
+            return $b->total_categories <=> $a->total_categories;
+        });
+
         return $size_charts[0];
     }
 
     public function wcfm_product_size_chart_popup() {
-        $chart = $this->get_chart();
-        if ( false == $chart ) {
-            return '';
-        }
-
+        $chart = $this->chart;
         echo '<a class="wcfm-product-size-chart-popup-btn" href="#">Size Chart</a>';
         echo '<div class="wcfm-product-size-chart-popup">';
             echo '<div class="wcfm-chart-popup-content">';
@@ -93,16 +121,11 @@ class WCFM_Product_Size_Chart_Woocommerce {
         echo '</div>';
     }
 
-    public function wcfm_product_size_chart_tab($tabs) {
-        $chart = $this->get_chart();
-        if ( false == $chart ) {
-            return $tabs;
-        }
-        
+    public function wcfm_product_size_chart_tab($tabs) {  
         $tabs['wcfm_size_chart'] = [
             'title' => __('Size Chart'),
-            'callback' => function() use($chart) {
-                $this->wcfm_product_size_chart_tab_content($chart);
+            'callback' => function() {
+                $this->wcfm_product_size_chart_tab_content($this->chart);
             }
         ];
         
