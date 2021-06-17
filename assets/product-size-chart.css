@@ -119,7 +119,8 @@ table.wcfm-product-size-chart-table tr td {
 }
 
 table.wcfm-product-size-chart-table thead tr th {
-    background-color: #f3f3f3;
+    color: #fff;
+    background-color: #c99000;
 }
 
 .wcfm-product-size-chart-popup-btn {margin-bottom: 10px; display: inline-block;}
