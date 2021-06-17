@@ -91,6 +91,10 @@ class WCFM_Endpoint_Product_Size_Chart {
 
 	public function wcfm_add_endpoint_menu($menus) {
 		global $WCFM;
+
+		if (!wcfm_is_vendor() ) {
+			return $menus;
+		}
         
         $featured_menus = array( 'wcfm-product-size-chart' => array(   'label'  => __( 'Product Size Chart', 'wc-frontend-manager'),
             'label' => 'Product Size Chart',

@@ -8,9 +8,9 @@ $post_statuses['trash'] = __('Trash'); ?>
     <div class="wcfm-collapse-content">
 
         <div class="wcfm-container wcfm-top-element-container">
-            <h2><?php _e( 'Product sizes chart', 'wcfm-product-size-chart' ); ?></h2>
+            <h2><?php _e( 'Product size charts', 'wcfm-product-size-chart' ); ?></h2>
             <a class="add_new_wcfm_ele_dashboard" href="<?php echo add_query_arg( 'edit_chart', 'new', wcfm_product_sizes_chart_url() ) ?>"><span
-                    class="wcfmfa fa-table"></span><span class="text">Add Product Size</span></a>
+                    class="wcfmfa fa-table"></span><span class="text">Add Size Chart</span></a>
         </div><br>
 
         <div class="wcfm-container">

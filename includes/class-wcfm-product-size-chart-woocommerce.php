@@ -58,12 +58,12 @@ class WCFM_Product_Size_Chart_Woocommerce {
             return '';
         }
 
+        add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
         if ( $this->chart->chart_position === 'before_cart_form' ) {
-            add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
         }
 
         if ( $this->chart->chart_position === 'tab' ) {
-            add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
+            //add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
         }
     }
 

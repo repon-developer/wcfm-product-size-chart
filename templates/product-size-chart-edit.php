@@ -57,7 +57,7 @@
 
                                 $product_size_table = $form->product_size_table;
                                 if ( !is_array($product_size_table) || empty($product_size_table)) {
-                                    $product_size_table = [[''], ['']];
+                                    $product_size_table = [['', ''], ['', '']];
                                 }
                                 
                                 $headers = array_shift($product_size_table);
@@ -102,15 +102,15 @@
                             </td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <th>Chart Position</th>
                             <td>
                                 <select name="chart_position">
-                                   <option value="tab" <?php selected($form->chart_position, 'tab') ?>>Within Tab</option>
-                                   <option value="before_cart_form" <?php selected($form->chart_position, 'before_cart_form') ?>>Before Cart Form</option>
+                                   <option value="tab" <?php //selected($form->chart_position, 'tab') ?>>Within Tab</option>
+                                   <option value="before_cart_form" <?php //selected($form->chart_position, 'before_cart_form') ?>>Before Cart Form</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th>Status</th>

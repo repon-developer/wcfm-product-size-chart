@@ -108,7 +108,7 @@ table.table-wcfm-product-sizes .actions a:last-child {margin-right: 0;}
 
 table.table-wcfm-chart-editor tfoot td {padding: 0!important; border-top: none!important; background-color: #f3f3f3!important}
 
-#chart-editor-container table.table-wcfm-chart-editor {border-collapse: collapse}
+#chart-editor-container table.table-wcfm-chart-editor {margin: 0!important; border-collapse: collapse}
 
 .wcfm-product-size-chart-container table.wcfm-product-size-chart-table {clear: both; width: 100%; margin-top: 20px;}
 

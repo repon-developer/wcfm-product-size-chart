@@ -72,8 +72,12 @@ class WCFM_Product_Size_Chart_Form {
 		
 		update_post_meta( $product_size_id, 'chart_position', $_POST['chart_position']);
 
-		wp_safe_redirect(add_query_arg( 'edit_chart', $product_size_id, wcfm_product_sizes_chart_url()));
-		exit;
+		$redirect_link = wcfm_product_sizes_chart_url();
+		if ( absint( $_GET['edit_chart'] ) > 0 ) {
+			$redirect_link = add_query_arg( 'edit_chart', $product_size_id, wcfm_product_sizes_chart_url());
+		}
+
+		exit(wp_safe_redirect($redirect_link));
 	}
 
 	public function __get ($name) {
