@@ -24,13 +24,13 @@
                             <td><?php wp_editor( $form->post_content, 'post_content') ?></td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <th>Product Categories</th>
                             <td>
                                 <select id="chart-categories" name="chart_categories[]" multiple="multiple">
                                     <?php foreach ($product_cats as $product_cat) {
-                                    $selected = in_array($product_cat->term_id, (array) $form->chart_categories) ? 'selected="selected"' : '';
-                                    printf('<option value="%s" %s>%s</option>', $product_cat->term_id, $selected, $product_cat->name);                                        
+                                   // $selected = in_array($product_cat->term_id, (array) $form->chart_categories) ? 'selected="selected"' : '';
+                                   // printf('<option value="%s" %s>%s</option>', $product_cat->term_id, $selected, $product_cat->name);                                        
                                 }
                                 ?>
                                 </select>
@@ -42,13 +42,13 @@
                             <td>
                                 <select id="chart-exclude-products" name="exclude_products[]" multiple="multiple">
                                     <?php foreach ($vendor_products as $product_id => $product_title) {
-                                        $selected = in_array($product_id, (array) $form->exclude_products) ? 'selected="selected"' : '';
-                                        printf('<option value="%s" %s>%s</option>', $product_id, $selected, $product_title);                                        
+                                       // $selected = in_array($product_id, (array) $form->exclude_products) ? 'selected="selected"' : '';
+                                        //printf('<option value="%s" %s>%s</option>', $product_id, $selected, $product_title);                                        
                                     }
                                     ?>
                                 </select>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th>Chart Table</th>
