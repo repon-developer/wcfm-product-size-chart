@@ -20,8 +20,8 @@ $post_statuses['trash'] = __('Trash'); ?>
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Product Categories</th>
-                            <th>Excluded Products</th>
+                            <!-- <th>Product Categories</th>
+                            <th>Excluded Products</th> -->
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -45,34 +45,34 @@ $post_statuses['trash'] = __('Trash'); ?>
 									<a href="<?php echo $edit_permalink; ?>"><?php the_title(); ?></a>
 								</td>
 
-                                <td>
+                                <!-- <td>
 									<?php
-                                        $terms = get_post_meta(get_the_id(), 'chart_categories', true);
-                                        if ( is_array($terms) && !empty($terms)) {
-                                            $product_cat = get_terms([
-                                                'taxonomy' => 'product_cat',
-                                                'hide_empty' => false,
-                                                'include' => $terms
-                                            ]);
+                                        // $terms = get_post_meta(get_the_id(), 'chart_categories', true);
+                                        // if ( is_array($terms) && !empty($terms)) {
+                                        //     $product_cat = get_terms([
+                                        //         'taxonomy' => 'product_cat',
+                                        //         'hide_empty' => false,
+                                        //         'include' => $terms
+                                        //     ]);
     
-                                            echo implode(', ', wp_list_pluck( $product_cat, 'name'));
-                                        }
+                                        //     echo implode(', ', wp_list_pluck( $product_cat, 'name'));
+                                        // }
                                     ?>
 								</td>
 
                                 <td>
 									<?php
-                                        $exclude_product_ids = get_post_meta(get_the_id(), 'exclude_products', true);
-                                        if ( is_array($exclude_product_ids) && !empty($exclude_product_ids)) {
-                                            $exclude_products = get_posts([
-                                                'include' => $exclude_product_ids,
-                                                'post_type' => 'product'
-                                            ]);
+                                        // $exclude_product_ids = get_post_meta(get_the_id(), 'exclude_products', true);
+                                        // if ( is_array($exclude_product_ids) && !empty($exclude_product_ids)) {
+                                        //     $exclude_products = get_posts([
+                                        //         'include' => $exclude_product_ids,
+                                        //         'post_type' => 'product'
+                                        //     ]);
                                             
-                                            echo implode(', ', wp_list_pluck( $exclude_products, 'post_title'));
-                                        }
+                                        //     echo implode(', ', wp_list_pluck( $exclude_products, 'post_title'));
+                                        // }
                                     ?>
-								</td>
+								</td> -->
 
                                 <td>
 									<?php echo $post_statuses[get_post_status()] ?>

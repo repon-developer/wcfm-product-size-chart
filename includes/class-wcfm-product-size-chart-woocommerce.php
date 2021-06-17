@@ -73,7 +73,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
         global $WCFM, $WCFMu, $wp;
 
         $charts = ['' => __('No Chart', 'wcfm-product-size-chart')];
-
         foreach (get_wcfm_product_size_charts() as $chart_item) {
             $charts[$chart_item->ID] = sprintf( esc_html__( '%1$s (#%2$s)', 'wcfm-product-size-chart' ), $chart_item->post_title, $chart_item->ID );            
         }
@@ -86,10 +85,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
     }
 
     public function wcfm_product_save_product_size_chart_id($product_id, $proudct_data) {
-        if ( empty($proudct_data['wcfm_product_size_chart'])) {
-            return;
-        }
-
         update_post_meta( $product_id, 'wcfm_product_size_chart_id', $proudct_data['wcfm_product_size_chart']);
     }
 
@@ -148,7 +143,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
         echo '<div class="wcfm-product-size-chart-popup">';
             echo '<div class="wcfm-chart-popup-content">';
                 echo '<span class="wcfmfa fa-close" data-close></span>';
-                echo '<h3 class="chart-title">'. get_the_title( $chart->ID ) .'</h3>';
+                // echo '<h3 class="chart-title">'. get_the_title( $chart->ID ) .'</h3>';
                 include WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
             echo '</div>';
         echo '</div>';
