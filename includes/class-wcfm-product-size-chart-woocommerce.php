@@ -83,7 +83,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
             "wcfm_product_size_chart" => array('label' => __( 'Select Size Chart', 'wcfm-product-size-chart' ), 'type' => 'select', 'options' => $charts, 'class' => 'wcfm-select wcfm_ele wcfm_full_ele catalog_visibility_ele simple variable external grouped booking', 'label_class' => 'wcfm_title wcfm_full_ele catalog_visibility_ele', 'value' => $chart_id ),
         )) );
 
-        echo '<a style="color:#666; margin-top: -10px!important;font-size:14px;text-align:left" class="wcfm_side_tag_cloud wcfm_fetch_tag_cloud" href="'. add_query_arg( 'edit_chart', 'new', wcfm_product_sizes_chart_url() ) . '">'. __('Add a Chart', 'wcfm-product-size-chart') .'</a>';
+        echo '<a style="color:#666; margin-top: -10px!important;font-size:14px;text-align:left" class="wcfm_side_tag_cloud wcfm_fetch_tag_cloud" href="'. add_query_arg( 'edit_chart', 'new', wcfm_product_sizes_chart_url() ) . '">'. __('create a chart', 'wcfm-product-size-chart') .'</a>';
     }
 
     public function wcfm_product_save_product_size_chart_id($product_id, $proudct_data) {
