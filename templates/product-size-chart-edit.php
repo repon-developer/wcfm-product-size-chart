@@ -116,7 +116,7 @@
                             <th>Status</th>
                             <td>
                                 <select name="post_status">
-                                    <?php foreach (get_post_statuses() as $key => $status) {
+                                    <?php foreach (wcfm_get_chart_statuses() as $key => $status) {
                                         printf('<option value="%s" %s>%s</option>', $key, selected( $post_status, $key ), $status);                                        
                                     }
                                     ?>

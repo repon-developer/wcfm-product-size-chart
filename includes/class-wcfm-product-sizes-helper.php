@@ -1,5 +1,12 @@
 <?php 
 
+function wcfm_get_chart_statuses() {
+    return [
+        'draft' => __('Draft', 'wcfm-product-size-chart'),
+        'publish' => __('Published', 'wcfm-product-size-chart'),
+    ];
+}
+
 /**
  * Get product size chart endpoint url
  *
@@ -19,7 +26,6 @@ function get_wcfm_product_size_charts($args = []) {
         'post_type' => 'wcfm_product_size',
         'author' => get_current_user_id(  ),
     ]);
-
 
     return get_posts( $args);     
 }

@@ -1,6 +1,6 @@
 <?php $product_sizes_query = new WCFM_Product_Size_Query();
 
-$post_statuses = get_post_statuses();
+$post_statuses = wcfm_get_chart_statuses();
 $post_statuses['trash'] = __('Trash'); ?>
 
 <div class="collapse wcfm-collapse" id="wcfm_product_size_chart">
