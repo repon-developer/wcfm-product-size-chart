@@ -80,7 +80,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
         }
 
         $chart = get_post( $chart_id );
-        echo '<a class="wcfm-product-size-chart-popup-btn" href="#">Size Chart</a>';
+        echo '<a class="wcfm-product-size-chart-popup-btn" href="#">' . __('Size Chart', 'wcfm-product-size-chart') . '</a>';
         echo '<div class="wcfm-product-size-chart-popup">';
             echo '<div class="wcfm-chart-popup-content">';
                 echo '<span class="wcfmfa fa-close" data-close></span>';
@@ -91,7 +91,7 @@ class WCFM_Product_Size_Chart_Woocommerce {
 
     public function wcfm_product_size_chart_tab($tabs) {  
         $tabs['wcfm_size_chart'] = [
-            'title' => __('Size Chart'),
+            'title' => __('Size Chart', 'wcfm-product-size-chart'),
             'callback' => function() {
                 $this->wcfm_product_size_chart_tab_content($this->chart);
             }

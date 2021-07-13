@@ -11,17 +11,17 @@
                     <input type="hidden" name="form_id" value=<?php echo $form->ID ?>>
                     <table class="table-product-size-chart-edit">
                         <tr>
-                            <th>Title</th>
+                            <th><?php _e('Title', 'wcfm-product-size-chart') ?></th>
                             <td><input type="text" name="post_title" value="<?php echo $form->post_title ?>"></td>
                         </tr>
 
                         <tr>
-                            <th>Chart size image & content</th>
+                            <th><?php _e('Chart size image & content', 'wcfm-product-size-chart') ?></th>
                             <td><?php wp_editor( $form->post_content, 'post_content') ?></td>
                         </tr>
 
                         <tr>
-                            <th>Chart Table</th>
+                            <th><?php _e('Chart Table', 'wcfm-product-size-chart') ?></th>
                             <td>
                                 <?php
 
@@ -63,17 +63,17 @@
 
                                         <tfoot>
                                             <tr>
-                                                <td colspan="20"><a class="btn-add-row" href="#">Add Row</a></td>
+                                                <td colspan="20"><a class="btn-add-row" href="#"><?php _e('Add Row', 'wcfm-product-size-chart') ?></a></td>
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <a class="btn-add-column" href="#">Add Column</a>
+                                    <a class="btn-add-column" href="#"><?php _e('Add Column', 'wcfm-product-size-chart') ?></a>
                                 </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <th>Status</th>
+                            <th><?php _e('Status', 'wcfm-product-size-chart') ?></th>
                             <td>
                                 <select name="post_status">
                                     <?php foreach (wcfm_get_chart_statuses() as $key => $status) {
@@ -85,7 +85,7 @@
                         </tr>
                     </table>
 
-                    <button class="btn-submit">Save Now</button>
+                    <button class="btn-submit"><?php _e('Save Now', 'wcfm-product-size-chart') ?></button>
                 </form>
             </div>
         </div>
