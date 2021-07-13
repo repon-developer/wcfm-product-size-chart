@@ -36,7 +36,7 @@ require_once dirname( __FILE__ ) . '/includes/class-wcfm-product-size-chart.php'
  * @since  1.0.1
  * @return WCFM_Product_Size_Chart
  */
-function WCFM_Product_Size_Chart() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName
+function WCFM_Product_Size_Chart() {
 	return WCFM_Product_Size_Chart::instance();
 }
 
