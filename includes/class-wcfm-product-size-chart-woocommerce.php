@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the class WP_Job_Manager.
+ * File containing the class WCFM_Product_Size_Chart_Woocommerce.
  *
  * @package wcfm-product-size-chart
  * @since   1.0.1
@@ -50,25 +50,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
         add_action('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
 	}
 
-    public function init() {
-        if(!is_product()) {
-            return;
-        }
-
-        $this->chart = $this->get_chart();
-        if ( false == $this->chart ) {
-            return '';
-        }
-        
-        if ( $this->chart->chart_position === 'before_cart_form' ) {
-            add_filter('woocommerce_single_product_summary', [$this, 'wcfm_product_size_chart_popup'], 25);
-        }
-
-        if ( $this->chart->chart_position === 'tab' ) {
-            //add_filter('woocommerce_product_tabs', [$this, 'wcfm_product_size_chart_tab'], 50);
-        }
-    }
-
     public function wcfm_add_product_size_chart_dropdown($product_id) {
         global $WCFM, $WCFMu, $wp;
 
@@ -90,48 +71,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
         update_post_meta( $product_id, 'wcfm_product_size_chart_id', $proudct_data['wcfm_product_size_chart']);
     }
 
-    public function get_chart() {
-        global $post;
-
-        $vendor_id = wcfm_get_vendor_id_by_post( $post->ID );
-        if ( !wcfm_is_vendor($vendor_id) ) {
-            return false;
-        }
-
-        $size_charts = get_wcfm_product_size_charts(['author' => $vendor_id]);
-        if ( sizeof($size_charts) == 0 ) {
-            return false;
-        }
-
-        $product_cats = get_the_terms( $post->ID, 'product_cat' );
-
-        $cat_ids = is_array($product_cats) ? wp_list_pluck( $product_cats, 'term_id') : [];
-
-        array_walk($size_charts, function(&$item){
-            $item->chart_categories = is_array($item->chart_categories) ? $item->chart_categories : [];
-            $item->exclude_products = is_array($item->exclude_products) ? $item->exclude_products : [];
-            $item->total_categories = sizeof($item->chart_categories);
-        });
-        
-        $size_charts = array_filter($size_charts, function($item) use ($cat_ids, $post) {
-            if ( in_array($post->ID,$item->exclude_products)) {
-                return false;
-            }
-            
-            return sizeof( array_diff($item->chart_categories, $cat_ids) ) == 0;
-        });
-
-        if ( empty($size_charts) ) {
-            return false;
-        }
-
-        usort($size_charts, function($a, $b) {
-            return $b->total_categories <=> $a->total_categories;
-        });
-
-        return $size_charts[0];
-    }
-
     public function wcfm_product_size_chart_popup() {
         global $product;
 
@@ -145,7 +84,6 @@ class WCFM_Product_Size_Chart_Woocommerce {
         echo '<div class="wcfm-product-size-chart-popup">';
             echo '<div class="wcfm-chart-popup-content">';
                 echo '<span class="wcfmfa fa-close" data-close></span>';
-                // echo '<h3 class="chart-title">'. get_the_title( $chart->ID ) .'</h3>';
                 include WCFM_PRODUCT_SIZE_CHART_PLUGIN_DIR . '/templates/product-size-chart-table.php';
             echo '</div>';
         echo '</div>';

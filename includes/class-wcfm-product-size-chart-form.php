@@ -66,17 +66,11 @@ class WCFM_Product_Size_Chart_Form {
 			'post_status' => $_POST['post_status']
 		]);
 
-		update_post_meta( $product_size_id, 'chart_categories', $_POST['chart_categories']);
-		update_post_meta( $product_size_id, 'exclude_products', $_POST['exclude_products']);
-		update_post_meta( $product_size_id, 'product_size_table', json_decode(stripslashes($_POST['product_size_table']),true));
-		
+
+		update_post_meta( $product_size_id, 'product_size_table', json_decode(stripslashes($_POST['product_size_table']),true));	
 		update_post_meta( $product_size_id, 'chart_position', $_POST['chart_position']);
 
 		$redirect_link = wcfm_product_sizes_chart_url();
-		// if ( absint( $_GET['edit_chart'] ) > 0 ) {
-		// 	$redirect_link = add_query_arg( 'edit_chart', $product_size_id, wcfm_product_sizes_chart_url());
-		// }
-
 		exit(wp_safe_redirect($redirect_link));
 	}
 

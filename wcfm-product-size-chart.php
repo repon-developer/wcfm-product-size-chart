@@ -29,9 +29,9 @@ define( 'WCFM_PRODUCT_SIZE_CHART_PLUGIN_BASENAME', plugin_basename( __FILE__ ) )
 require_once dirname( __FILE__ ) . '/includes/class-wcfm-product-size-chart.php';
 
 /**
- * Main instance of WP Job Manager.
+ * Main instance of WCFM Product Size Chart.
  *
- * Returns the main instance of WP Job Manager to prevent the need to use globals.
+ * Returns the main instance of WCFM Product Size Chart to prevent the need to use globals.
  *
  * @since  1.0.1
  * @return WCFM_Product_Size_Chart
@@ -41,10 +41,3 @@ function WCFM_Product_Size_Chart() { // phpcs:ignore WordPress.NamingConventions
 }
 
 $GLOBALS['job_manager'] = WCFM_Product_Size_Chart();
-
-// // Activation - works with symlinks.
-// register_activation_hook( basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ), array( WPJM(), 'activate' ) );
-
-// // Cleanup on deactivation.
-// register_deactivation_hook( __FILE__, array( WPJM(), 'unschedule_cron_jobs' ) );
-// register_deactivation_hook( __FILE__, array( WPJM(), 'usage_tracking_cleanup' ) );

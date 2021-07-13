@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the class WP_Job_Manager_Post_Types.
+ * File containing the class WCFM_Product_Size_Chart_Post_Types.
  *
  * @package wcfm-product-size-chart
  */
