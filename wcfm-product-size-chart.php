@@ -40,4 +40,4 @@ function WCFM_Product_Size_Chart() {
 	return WCFM_Product_Size_Chart::instance();
 }
 
-$GLOBALS['job_manager'] = WCFM_Product_Size_Chart();
+$GLOBALS['wcfm_product_size_chart'] = WCFM_Product_Size_Chart();

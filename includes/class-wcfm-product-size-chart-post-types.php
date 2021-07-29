@@ -78,7 +78,6 @@ class WCFM_Product_Size_Chart_Post_Types {
 				'remove_featured_image' => __( 'Remove Product Size Image', 'wcfm-product-size-chart' ),
 				'use_featured_image'    => __( 'Use as Product Size Image', 'wcfm-product-size-chart' ),
 			],
-			// translators: Placeholder %s is the plural label of the job listing post type.
 			'description'           => sprintf( __( 'This is where you can create and manage %s.', 'wcfm-product-size-chart' ), $plural ),
 			'public'                => false,
 			'hierarchical'          => false,
